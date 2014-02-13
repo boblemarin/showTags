@@ -11,7 +11,32 @@
       }
     </style>
 
-    <script type="text/javascript" src="./src/example.js" ></script>
+    <script type="text/javascript">
+    // dynamicaly add the script in the page
+
+    var tagAdded = false,
+        showThem;
+
+    showThem = function () {
+
+      if(tagAdded){
+        console.log("Script allready added");
+        return;
+      }
+      tagAdded = true;
+
+      console.log("Add Script");
+
+      var script = document.createElement('script');
+      script.onload = function() {
+        console.log("Script loaded");
+      };
+      script.src = "./src/showTags.js";
+      document.getElementsByTagName('head')[0].appendChild(script);
+
+    };
+    </script>
+
   </head>
   <body>
     <h1>Bonjour !</h1>
