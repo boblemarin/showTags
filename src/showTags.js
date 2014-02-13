@@ -8,14 +8,17 @@
   var doc             = document,
       style           = doc.createElement('style'),
       tagsToHighlight = ('h1 h2 h3 h4 h5 h6 h7 a p div span img blockquote form input strong em i b u strong em code pre section article footer header nav aside').split(' '),
-      styleToApply    = 'font-size:.7em;padding:1px 3px;vertical-align:middle;opacity:.5;border-radius:5px;color:#A00;background:#FFF;}',
+      commonStyle     = 'font-size:10px;font-family:monospace;padding:1px 2px;vertical-align:middle;opacity:.4;border-radius:5px;color:#A00;background:rgba(255,255,255,.7);position:absolute;}',
       styleInner      = '',
-      i;
+      i, tagTmp;
 
   // find Them
   for (i in tagsToHighlight) {
-    styleInner += tagsToHighlight[i] + ':before{content:\42\\003c ' + tagsToHighlight[i] + '\\003e\42;' + styleToApply;
-    styleInner += tagsToHighlight[i] + ':after{content:\42\\003c/' + tagsToHighlight[i] + '\\003e\42;' + styleToApply;
+    tagTmp      = tagsToHighlight[i];
+
+    styleInner += tagTmp + ':before{content:\42\\003c ' + tagTmp + '\\003e\42;' + commonStyle;
+    styleInner += tagTmp + ':after{content:\42\\003c/' +tagTmp + '\\003e\42;' + commonStyle;
+    styleInner += tagTmp + ':hover:after, :hover:before{position:relative;opacity:.8}';
   }
 
   // bind Them
