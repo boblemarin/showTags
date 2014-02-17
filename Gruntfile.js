@@ -5,6 +5,10 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     uglify: {
+      options: {
+        report: 'min',
+        banner: 'javascript:'
+      },
       showTags: {
         files: {
           'src/showTags.min.js': ['src/showTags.js']
@@ -13,7 +17,7 @@ module.exports = function(grunt) {
     },
     watch: {
       showTags: {
-        files: ['<%= src.files %>'],
+        files: ['./src/showTags.js'],
         tasks: ['uglify']
       }
     }
